@@ -1,12 +1,8 @@
-package rest.entity;
+package com.university_springboot.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -32,7 +28,7 @@ public class Group {
 
     @OneToMany(mappedBy="universityGroup",
             fetch = FetchType.EAGER)
-    @JsonManagedReference // will be serialized normally
+    @JsonBackReference // it will be omitted from serialization
     private List<Student> students;
 
     public Group() {

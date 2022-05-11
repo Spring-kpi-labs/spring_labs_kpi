@@ -1,12 +1,8 @@
-package rest.entity;
+package com.university_springboot.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name="students")
@@ -40,7 +36,7 @@ public class Student {
             CascadeType.DETACH,
             CascadeType.REFRESH})
     @JoinColumn(name="group_id")
-    @JsonBackReference // it will be omitted from serialization
+    @JsonManagedReference // will be serialized normally
     private Group universityGroup;
 
     public Student() {
